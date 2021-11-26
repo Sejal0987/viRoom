@@ -21,17 +21,19 @@ can join the class online, through the invitation mail send to their registered 
 ### How To Use
 
 #### Step 1:
-Download or clone this repo
+Download or clone this repository.
 
 #### Step 2:
 Go to project root and execute the following command in console to get the required dependencies:
-
-`flutter pub get`
+```
+flutter pub get
+```
 
 #### Step 3:
 Add your ANDROID_CLIENT_ID in:
-
-`lib/Secret_keys_secret.dart`
+```
+lib/Secret_keys_secret.dart
+```
 
 #### Step 4:
 To get more details to enable Calendar API & generate ANDROID_CLIENT_ID:
@@ -41,8 +43,9 @@ To get more details to enable Calendar API & generate ANDROID_CLIENT_ID:
 #### Step 5:
 Replace google-services.json, with your json file (make sure you added the
 right package name in firebase) , which contains client Id and certificate_hash & Api key:
-
-`android/app/google-services.json`
+```
+android/app/google-services.json
+```
 
 #### Tip:
 > Make sure you download json file again after adding SHA key.
@@ -52,6 +55,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
 > Getting problem in generating SHA key use this command in Android Studio Terminal:
 
 `keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
+
 
 
 ### ViRoom Features:
@@ -93,8 +97,8 @@ right package name in firebase) , which contains client Id and certificate_hash 
    Here is the folder structure we have been using in this project:
    ```
    lib/
-   |- Authentication/
-   |- Calender_files/
+   |- authentication/
+   |- calender_files/
    |- db/
    |- Screens/
    |- Secret_keys/
@@ -103,71 +107,71 @@ right package name in firebase) , which contains client Id and certificate_hash 
    |- main.dart
    ```
 ### Authentication
-    This directory contains all the files for user authentication (in firebase):
-    ```
-    Authentication/
-    |- login.dart
-    |- signUp.dart
-    ```
+   This directory contains all the files for user authentication (in firebase):
+   ```
+   authentication/
+   |- login.dart
+   |- signUp.dart
+   ```
 
 ### Calender_files
-    All the files that are used to insert,modify or delete event in calendar are included in this directory:
-    ```
-    Calender_files/
-    |- calender_client.dart
-    |- event_info.dart
-    ```
+   All the files that are used to insert,modify or delete event in calendar are included in this directory:
+   ```
+   calender_files/
+   |- calender_client.dart
+   |- event_info.dart
+   ```
 
 ### db
-    Contains files used to store data in database (firestore):
-    ```
-    db/
-    |- storage.dart
-    |- user.dart
-    ```
+   Contains files used to store data in database (firestore):
+   ```
+   db/
+   |- storage.dart
+   |- user.dart
+   ```
 
 ### Screens
-    This directory includes all the screens in the App:
-    ```
-    Screens/
-    |- Class_list
-       |- schedulerList.dart
-    |- Event_creation
-       |- create_screen.dart
-    |- SplashScreen
-       |- splash_screen.dart
-    |- UpdateForm.dart
-    |- welcome_page.dart
-    ```
+   This directory includes all the screens in the App:
+   ```
+   Screens/
+   |- Class_list
+      |- schedulerList.dart
+   |- Event_creation
+      |- create_screen.dart
+   |- SplashScreen
+      |- splash_screen.dart
+   |- UpdateForm.dart
+   |- welcome_page.dart
+   ```
 
-    1. Class_list
-       - Contains file that shows list of all the class added by faculties.
-    2. Event_creation
-       - Contains file to schedule offline & online class.
-    3. SplashScreen
-       - Splash screen of the App.
-    4. UpdateForm
-       - Updating the vaccination status details.
-    5. welcome_page
-       - First page of the app.
+ 1. Class_list
+    - Contains file that shows list of all the class added by faculties.
+ 2. Event_creation
+    - Contains file to schedule offline & online class.
+ 3. SplashScreen
+    - Splash screen of the App.
+ 4. UpdateForm
+    - Updating the vaccination status details.
+ 5. welcome_page
+    - First page of the app.
 
 
 ### Secret_keys
-    ```
-    Secret_keys/
-    |- secret.dart
-    ```
+   ```
+   Secret_keys/
+   |- secret.dart
+   ```
 
 ### widgets
-    Contains the common widgets that are shared across multiple screens. For example, Button, TextField etc:
-    ```
-    widgets/
-    |- color.dart
-    |- drawer_inkWell.dart
-    |- my_ListTile.dart
-    |- my_TextField.dart
-    |- myButton.dart
-    ```
+   Contains the common widgets that are shared across multiple screens. For example, Button, TextField etc:
+   ```
+   widgets/
+   |- color.dart
+   |- drawer_inkWell.dart
+   |- my_ListTile.dart
+   |- my_TextField.dart
+   |- myButton.dart
+   ```
 
 
 
