@@ -173,6 +173,10 @@ android/app/google-services.json
    |- myButton.dart
    ```
 
+## Conclusion
+  ViRoom is an advanced scheduler, a tool build for the students & faculties to manage classes, in this pandemic as well as in normal days.
+
+
 
 
 
