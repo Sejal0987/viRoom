@@ -25,25 +25,32 @@ Download or clone this repo
 
 #### Step 2:
 Go to project root and execute the following command in console to get the required dependencies:
+
 `flutter pub get`
 
 #### Step 3:
 Add your ANDROID_CLIENT_ID in:
-'lib/Secret_keys_secret.dart'
+
+`lib/Secret_keys_secret.dart`
 
 #### Step 4:
 To get more details to enable Calendar API & generate ANDROID_CLIENT_ID:
+
 [Click Here](https://blog.codemagic.io/google-meet-events-in-flutter/)
 
 #### Step 5:
 Replace google-services.json, with your json file (make sure you added the
 right package name in firebase) , which contains client Id and certificate_hash & Api key:
+
 `android/app/google-services.json`
 
 #### Tip:
 > Make sure you download json file again after adding SHA key.
+
 > Enable your Realtime Database, Cloud Firestore & Firebase Authentication.
+
 > Getting problem in generating SHA key use this command in Android Studio Terminal:
+
 `keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
 
 
@@ -96,7 +103,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
    |- main.dart
    ```
 ### Authentication
-    This directory contains all the files for user authentication (in firebase).
+    This directory contains all the files for user authentication (in firebase):
     ```
     Authentication/
     |- login.dart
@@ -104,7 +111,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
     ```
 
 ### Calender_files
-    All the files that are used to insert,modify or delete event in calendar are included in this directory.
+    All the files that are used to insert,modify or delete event in calendar are included in this directory:
     ```
     Calender_files/
     |- calender_client.dart
@@ -112,7 +119,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
     ```
 
 ### db
-    Contains files used to store data in database (firestore).
+    Contains files used to store data in database (firestore):
     ```
     db/
     |- storage.dart
@@ -120,7 +127,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
     ```
 
 ### Screens
-    This directory includes all the screens in the App.
+    This directory includes all the screens in the App:
     ```
     Screens/
     |- Class_list
@@ -152,7 +159,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
     ```
 
 ### widgets
-    Contains the common widgets that are shared across multiple screens. For example, Button, TextField etc.
+    Contains the common widgets that are shared across multiple screens. For example, Button, TextField etc:
     ```
     widgets/
     |- color.dart
@@ -160,6 +167,7 @@ right package name in firebase) , which contains client Id and certificate_hash 
     |- my_ListTile.dart
     |- my_TextField.dart
     |- myButton.dart
+    ```
 
 
 
