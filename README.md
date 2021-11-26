@@ -40,6 +40,10 @@ To get more details to enable Calendar API & generate ANDROID_CLIENT_ID:
 
 [Click Here](https://blog.codemagic.io/google-meet-events-in-flutter/)
 
+If Android Client ID not generated, refer this:
+
+> https://developers.google.com/identity/protocols/oauth2/native-app
+
 #### Step 5:
 Replace google-services.json, with your json file (make sure you added the
 right package name in firebase) , which contains client Id and certificate_hash & Api key:
