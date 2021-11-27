@@ -1,6 +1,6 @@
 # ViRoom App
 
-ViRoom app is an android app build using Flutter, which integrates google meet, with the help of Calendar API.
+ViRoom is an android app build using Flutter, which integrates google meet, with the help of Calendar API.
 
 
 
@@ -8,12 +8,12 @@ ViRoom app is an android app build using Flutter, which integrates google meet, 
 
 ViRoom is an application which creates a platform, that help students & faculties to connect in this pandemic.
 
-It is a tool that let faculties to schedule a class online that will be taken offline or remotely at particular
+It is a tool that let faculties schedule a class online, that will be taken offline or remotely at particular
 date & time. The tool helps faculty to set the maximum requirement of the students for an offline class,
-and students on other side can request to join the class in-person or remotely,showing a list of all
-requested students to the faculty, how can either allow or reject that particular student.
+and students on other side can request to join the class in-person or remotely. Showing a list of all the
+requested students to the faculty, who can either allow or reject that particular student.
 
-Faculty when created the class will also add an event to his calendar on that date & time, and will generate a google
+Faculty when created the class, will also add an event to his calendar on that date & time, and will generate a google
 meet link so that the students who are rejected or were not able to request before the class got filled,
 can join the class online, through the invitation mail send to their registered email.
 
@@ -46,7 +46,7 @@ If Android Client ID not generated, refer this:
 
 #### Step 5:
 Replace google-services.json, with your json file (make sure you added the
-right package name in firebase) , which contains client Id and certificate_hash & Api key:
+right package name in firebase) , which contains client Id, certificate_hash & Api key:
 ```
 android/app/google-services.json
 ```
@@ -54,9 +54,11 @@ android/app/google-services.json
 #### Tip:
 > Make sure you download json file again after adding SHA key.
 
+> Keep your Power Saving Mode off, as that might create problem in calendar access.
+
 > Enable your Realtime Database, Cloud Firestore & Firebase Authentication.
 
-> Getting problem in generating SHA key use this command in Android Studio Terminal:
+> Getting problem in generating SHA key? use this command in Android Studio Terminal:
 
 `keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
 
@@ -69,24 +71,26 @@ android/app/google-services.json
  3. User Authentication
     - Letting students & faculties to sign up, by filling basic details.
     - Letting already existing users to login.
-    - Taking Google access permission from users, to add, delete event from calendar.
+    - Taking Google access permission from users, to add, delete event from their calendar.
  4. Features for Faculties
-    - Scheduling offline class, with the help the app.
+    - Scheduling offline classes.
     - Entering all required details about the class.
-    - Setting up a limit of maximum students allowed in offline class.
+    - Setting up a limit of maximum students allowed in an offline class.
     - Getting list of all the students requested to join the class.
     - Allowing or Rejecting students depending on their details (like:Vaccination Status).
     - Generating google meet link for the same class scheduled offline, so that the students rejected or were not able
     to request before class got filled can join it online.
-    - Button to send google meet link to all requested students, with an invitation email.
+    - Button to send google meet link to all the requested students, with an invitation email.
     - Letting them delete any class they want to, which will send cancellation mail to all the students requested
-     & received invitation before.
-    - Alerting faculties when students allowed reach limit.
+     & received invitation before. (Cancellation mail will only be sent if the faculty have send invitation mail
+     before by click on send link button, if no invitation mail sent, then deletion of that class wont't send any cancellation email.)
+    - Alerting faculties when students allowed, reach a limit.
  5. Features For Students
     - Requesting to Join class remotely.
     - Viewing their Status of every class (allowed, rejected or waiting).
     - Ability to change their details (vaccination status).
     - If class filled, sending request to join online.
+    - Receiving an invite of the class to join online.
 
 ### Folder Structure
    Here is the core folder structure which flutter provides:
@@ -111,7 +115,7 @@ android/app/google-services.json
    |- main.dart
    ```
 ### Authentication
-   This directory contains all the files for user authentication (in firebase):
+   This directory contains all the files for user's authentication (in firebase):
    ```
    authentication/
    |- login.dart
@@ -119,7 +123,7 @@ android/app/google-services.json
    ```
 
 ### Calender_files
-   All the files that are used to insert,modify or delete event in calendar are included in this directory:
+   All the files that are used to insert, modify or delete an event in the calendar are included in this directory:
    ```
    calender_files/
    |- calender_client.dart
@@ -127,7 +131,7 @@ android/app/google-services.json
    ```
 
 ### db
-   Contains files used to store data in database (firestore):
+   Contain files used to store data in database (firestore):
    ```
    db/
    |- storage.dart
@@ -149,9 +153,9 @@ android/app/google-services.json
    ```
 
  1. Class_list
-    - Contains file that shows list of all the class added by faculties.
+    - Contain file that shows list of all the class added by faculties.
  2. Event_creation
-    - Contains file to schedule offline & online class.
+    - Contain file to schedule offline & online class.
  3. SplashScreen
     - Splash screen of the App.
  4. UpdateForm
