@@ -183,8 +183,8 @@ android/app/google-services.json
 
 ## ScreenShots
 
-  ![Splash](github_img_video/splash.jpg) | ![welcome](github_img_video/welcome.jpg) ![file1](github_img_video/file1.mp4)
 
+   <img src="github_img_video/splash.jpg" width="425"/> <img src="github_img_video/welcome.jpg" width="425"/>
 
 
 ## Conclusion
