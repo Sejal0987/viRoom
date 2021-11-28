@@ -184,7 +184,7 @@ android/app/google-services.json
 ## ScreenShots
 
 
-   <img src="github_img_video/splash.jpg" width="425"/> <img src="github_img_video/welcome.jpg" width="425"/>
+   <img src="github_img_video/splash.jpg" width="100"/> <img src="github_img_video/welcome.jpg" width="100"/> <img src="github_img_video/file2.jpg" width="100"/><img src="github_img_video/file3.jpg" width="100"/><img src="github_img_video/file5.jpg" width="100"/>
 
 
 ## Conclusion
