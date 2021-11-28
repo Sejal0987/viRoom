@@ -101,7 +101,7 @@ class _ClassListState extends State<ClassList> {
             },
           ),
         ),
-        //user details.
+        //Drawer containing user's details.
         drawer: Drawer(
           child: ListView(
             children: [
@@ -373,7 +373,7 @@ class _MyContainerState extends State<MyContainer> {
   Storage storage = Storage();
   CalendarClient calendarClient = CalendarClient();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext buildContext) {
     Color color = Colors.black26;
 
     //Dialog Box of List of Students Requested.
@@ -673,6 +673,7 @@ class _MyContainerState extends State<MyContainer> {
           });
     }
 
+    //Color code depending upon status.
     if (widget.status == 'waiting') {
       color = Colors.cyan;
     } else if (widget.status == 'allowed') {
@@ -693,7 +694,7 @@ class _MyContainerState extends State<MyContainer> {
               if (widget.documents['maxStud'] == 0) {
                 //if students allowed have reached limit.
                 Alert(
-                  context: context,
+                  context: buildContext,
                   type: AlertType.info,
                   title: "ALERT",
                   desc: "Maximum students are already Allowed.",
@@ -704,15 +705,15 @@ class _MyContainerState extends State<MyContainer> {
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(buildContext);
                       },
                       width: 120,
                     )
                   ],
-                ).show().whenComplete(() =>
-                    _displayTextInputDialog(context, lst, widget.documents));
+                ).show().whenComplete(() => _displayTextInputDialog(
+                    buildContext, lst, widget.documents));
               } else {
-                _displayTextInputDialog(context, lst, widget.documents);
+                _displayTextInputDialog(buildContext, lst, widget.documents);
               }
             },
             child: Container(
@@ -729,40 +730,47 @@ class _MyContainerState extends State<MyContainer> {
                 ))),
           ),
         ),
-
-        //Button to Delete Class.
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: RawMaterialButton(
-            onPressed: () async {
-              String eventId = widget.event.id;
-              await calendarClient.delete(eventId, true).whenComplete(() async {
-                await storage
-                    .deleteEvent(id: eventId)
-                    .catchError((e) => print(e));
-              });
-              await widget.documents.reference.delete();
-            },
-            child: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                    color: Colors.cyan.shade100,
-                    border: Border.all(color: Colors.cyan.shade900, width: 6)),
-                child: Center(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.delete),
-                    Text(
-                      'Delete'.toUpperCase(),
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700, fontFamily: "Amiri"),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ))),
-          ),
-        ),
+        Builder(builder: (context) {
+          //Button to Delete Class.
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RawMaterialButton(
+              onPressed: () async {
+                setState(() {
+                  Slidable.of(context).close();
+                });
+                String eventId = widget.event.id;
+                await calendarClient
+                    .delete(eventId, true)
+                    .whenComplete(() async {
+                  await storage
+                      .deleteEvent(id: eventId)
+                      .catchError((e) => print(e));
+                });
+                await widget.documents.reference.delete();
+              },
+              child: Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                      color: Colors.cyan.shade100,
+                      border:
+                          Border.all(color: Colors.cyan.shade900, width: 6)),
+                  child: Center(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.delete),
+                      Text(
+                        'Delete'.toUpperCase(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700, fontFamily: "Amiri"),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ))),
+            ),
+          );
+        })
       ],
 
       // Slidable only when logged in by faculty.
@@ -873,7 +881,7 @@ class _MyContainerState extends State<MyContainer> {
                                               widget.documents['end']))
                                   .then((value) {
                                 Alert(
-                                  context: context,
+                                  context: buildContext,
                                   type: AlertType.success,
                                   title: "ALERT",
                                   desc:
@@ -886,7 +894,7 @@ class _MyContainerState extends State<MyContainer> {
                                             color: Colors.white, fontSize: 20),
                                       ),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        Navigator.pop(buildContext);
                                       },
                                       width: 120,
                                     )
@@ -895,7 +903,7 @@ class _MyContainerState extends State<MyContainer> {
                               });
                             } else {
                               Alert(
-                                context: context,
+                                context: buildContext,
                                 type: AlertType.warning,
                                 title: "ALERT",
                                 desc: "No Student requested.",
@@ -907,7 +915,7 @@ class _MyContainerState extends State<MyContainer> {
                                           color: Colors.white, fontSize: 20),
                                     ),
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      Navigator.pop(buildContext);
                                     },
                                     width: 120,
                                   )
@@ -933,8 +941,8 @@ class _MyContainerState extends State<MyContainer> {
                               children: [
                                 //Subject
                                 Container(
-                                  width:
-                                      0.5 * MediaQuery.of(context).size.width,
+                                  width: 0.5 *
+                                      MediaQuery.of(buildContext).size.width,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -948,7 +956,7 @@ class _MyContainerState extends State<MyContainer> {
                                           maxLines: 1,
                                           style: TextStyle(
                                               fontSize: 0.026 *
-                                                  MediaQuery.of(context)
+                                                  MediaQuery.of(buildContext)
                                                       .size
                                                       .height,
                                               letterSpacing: 1.2,
@@ -964,7 +972,7 @@ class _MyContainerState extends State<MyContainer> {
                                           maxLines: 1,
                                           style: TextStyle(
                                               fontSize: 0.026 *
-                                                  MediaQuery.of(context)
+                                                  MediaQuery.of(buildContext)
                                                       .size
                                                       .height,
                                               letterSpacing: 1.2,
@@ -987,7 +995,7 @@ class _MyContainerState extends State<MyContainer> {
                                     fontWeight: FontWeight.w900,
                                     color: Colors.cyan.shade900,
                                     fontSize: 0.021 *
-                                        MediaQuery.of(context).size.height,
+                                        MediaQuery.of(buildContext).size.height,
                                   ),
                                 ),
 
@@ -1011,7 +1019,8 @@ class _MyContainerState extends State<MyContainer> {
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w900,
                                                     fontSize: 0.014 *
-                                                        MediaQuery.of(context)
+                                                        MediaQuery.of(
+                                                                buildContext)
                                                             .size
                                                             .height,
                                                     color: Colors.black,
@@ -1023,7 +1032,8 @@ class _MyContainerState extends State<MyContainer> {
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w900,
                                                     fontSize: 0.014 *
-                                                        MediaQuery.of(context)
+                                                        MediaQuery.of(
+                                                                buildContext)
                                                             .size
                                                             .height,
                                                     color: Colors.black,
@@ -1039,7 +1049,7 @@ class _MyContainerState extends State<MyContainer> {
                                 ),
                                 SizedBox(
                                   height: 0.0053 *
-                                      MediaQuery.of(context).size.height,
+                                      MediaQuery.of(buildContext).size.height,
                                 ),
 
                                 //Button to request for Joining the class, only visible to students.
@@ -1089,7 +1099,7 @@ class _MyContainerState extends State<MyContainer> {
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w900,
                                                 fontSize: 0.018 *
-                                                    MediaQuery.of(context)
+                                                    MediaQuery.of(buildContext)
                                                         .size
                                                         .height,
                                                 color: !widget.clickable
@@ -1210,7 +1220,7 @@ class _MyContainerState extends State<MyContainer> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   fontSize: 0.018 *
-                                      MediaQuery.of(context).size.height,
+                                      MediaQuery.of(buildContext).size.height,
                                   color: Colors.black,
                                   letterSpacing: 1.2,
                                   fontFamily: "Teko",

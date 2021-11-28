@@ -80,10 +80,11 @@ class _WelcomePageState extends State<WelcomePage> {
                             .then((AuthClient client) async {
                           print(_scopes);
                           CalendarClient.calendar = cal.CalendarApi(client);
-                          await CalendarClient.calendar.calendarList
-                              .list()
+                          await CalendarClient.calendar.calendars
+                              .get('primary')
                               .then((value) {
-                            ls = value.items[0].id;
+                            print(value.toJson());
+                            ls = value.id;
                           });
                         }).then((value) {
                           print(ls);
@@ -115,11 +116,11 @@ class _WelcomePageState extends State<WelcomePage> {
                             .then((AuthClient client) async {
                           CalendarClient.calendar = cal.CalendarApi(client);
                           print(_scopes);
-                          await CalendarClient.calendar.calendarList
-                              .list()
+                          await CalendarClient.calendar.calendars
+                              .get('primary')
                               .then((value) {
                             print(value.toJson());
-                            ls = value.items[0].id;
+                            ls = value.id;
                           });
                         }).then((value) {
                           print(ls);
